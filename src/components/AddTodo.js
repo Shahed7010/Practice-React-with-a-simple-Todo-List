@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux' 
+import {addTodo} from '../actions/todoactions'
 
 class AddTodo extends Component{
     state = {
@@ -28,4 +30,10 @@ class AddTodo extends Component{
         )
     }
 }
-export default AddTodo
+
+const mapDoispatchToProps = (dispatch) => {
+    return {
+        addTodo : (todo) => {dispatch (addTodo(todo))}
+    }
+}
+export default connect(null, mapDoispatchToProps)(AddTodo)

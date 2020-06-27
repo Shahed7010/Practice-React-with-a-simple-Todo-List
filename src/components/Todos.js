@@ -1,13 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux' 
+import {deleteTodo} from '../actions/todoactions'
 
-const Todos = ({todos, deleteTodo} ) =>{
-    const todoList = todos.length ? (
-      todos.map(todo =>{
+const Todos = ( props ) =>{
+    const handleDelete = (id) =>{
+        props.deleteTodo(id)
+    }
+    const todoList = props.todos.length ? (
+      props.todos.map(todo =>{
           return(
               <ul className="list-group" key={todo.id}>
                   <li className="list-group-item">
                   {todo.content}
-                  <button onClick={() => {deleteTodo(todo.id)}} className="btn btn-danger float-right">delete</button>
+                  <button onClick={ () => {handleDelete(todo.id)}} className="btn btn-danger float-right">delete</button>
                   </li>
               </ul>
           )
@@ -22,4 +27,14 @@ const Todos = ({todos, deleteTodo} ) =>{
     )
 }
 
-export default Todos
+const mapStateToProps = (state) =>{
+    return {
+      todos: state.todos
+    }
+  }
+const mapDoispatchToProps = (dispatch) => {
+    return {
+        deleteTodo : (id) => {dispatch (deleteTodo(id))}
+    }
+}
+export default connect(mapStateToProps, mapDoispatchToProps)(Todos)

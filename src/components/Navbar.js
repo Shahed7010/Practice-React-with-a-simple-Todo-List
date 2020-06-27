@@ -9,10 +9,10 @@ const Navbar = () => {
                     <Link className="navbar-brand" to="/">TODO</Link>
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item ">
-                            <Link className="nav-link" to="/">App</Link>
+                            <NavLink className="nav-link" to="/">App</NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/about">about</Link>
+                            <NavLink className="nav-link" to="/about">about</NavLink>
                         </li>
                     </ul>
                 </nav>
