@@ -32,9 +32,9 @@ const mapStateToProps = (state) =>{
       todos: state.todos
     }
   }
-const mapDoispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         deleteTodo : (id) => {dispatch (deleteTodo(id))}
     }
 }
-export default connect(mapStateToProps, mapDoispatchToProps)(Todos)
+export default connect(mapStateToProps, mapDispatchToProps)(Todos)
